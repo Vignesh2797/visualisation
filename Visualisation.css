@@ -1,0 +1,166 @@
+body {
+    background-color: #3f3b8e;
+}
+
+.layout {
+    margin: 0px 20px;
+    margin-top: 7em;
+}
+
+.title {
+    font-size: 28px;
+    font-family: sans-serif;
+    margin-right: 10em;
+}
+
+.fa-globe {
+    margin-right: 5px;
+}
+
+.header {
+    background-color: #3f3b8e;
+    padding: 20px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.nav .nav-link {
+    margin-right: 10px;
+    color: #918a7e;
+    font-size: 18px;
+}
+
+.nav .nav-link.active {
+    color: #ffffff;
+}
+
+.tab-content {
+    margin: 20px;
+}
+
+.card {
+    margin: 0 5px;
+    font-family: sans-serif;
+    box-shadow: 0px 0px 15px 1px #ccc !important;
+    transition: 0.5s ease-in-out;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+.info .card {
+    border-left: 5px solid #3f3b8e;
+    margin-bottom: 20px;
+}
+
+.static-data {
+    text-align: center;
+}
+
+.checkbox {
+    padding: 20px;
+}
+
+.checkbox-row {
+     margin-bottom: 20px;
+}
+
+.selectcheckbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-group {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-group .btn-secondary {
+    background-color: #3f3b8e;
+    margin-right: 5px;
+    padding: 10px 30px;
+}
+
+.btn-group .btn-secondary:focus {
+    border: 2px solid #000;
+    box-shadow: none;
+}
+
+#birthdeath, #literacy_adults, #literacy_male, #literacy_female, #life_expectancy, #land, #agriculture {
+    margin: 20px 0;
+}
+
+.gdpcards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gdpcards .card {
+    width: 400px;
+    padding: 0 15px;
+}
+
+#gdp {
+    height: 690px;
+}
+
+.importexport {
+    margin-bottom: 20px;
+}
+
+.fas {
+    text-align: right;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.forest_radio, .agri_radio {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.forest_radio label {
+    display: inline-block;
+}
+
+.forest_radio span {
+    margin-right: 5px;
+}
+
+.references {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-body {
+    padding: 20px 0 !important;
+}
+
+.modal-body p {
+    margin-bottom: 0px;
+}
+
+.modal-body h5 {
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+.card img {
+    width: 200px;
+    margin: 0 auto;
+}

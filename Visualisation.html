@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./Visualisation.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/mapdata/custom/world-robinson.js"></script>
+    <script type="text/javascript" src="./population.js"></script>
+    <script type="text/javascript" src="./gdp.js"></script>
+    <script type="text/javascript" src="./production.js"></script>
+    <script type="text/javascript" src="./rates.js"></script>
+    <script type="text/javascript" src="./land.js"></script>
+    <script type="text/javascript" src="./agriculture.js"></script>
+    <title>Visualization</title>
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="title">
+            <i class="fas fa-globe"></i>World Statistics
+        </div>
+        <div class="tabs">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#tab1" data-toggle="tab">
+                        <div class="cards">
+                            Population</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab2" data-toggle="tab">
+                        <div class="cards">
+                            GDP
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab5" data-toggle="tab">
+                        <div class="cards">
+                            Land
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab3" data-toggle="tab">
+                        <div class="cards">
+                            Production
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab4" data-toggle="tab">
+                        <div class="cards">
+                            Rates
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="references">
+            <i type="button" data-toggle="modal" data-target="#references" class="fas fa-bars"></i>
+        </div>
+    </div>
+    <div class="layout">
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade active show">
+                <div class="row info animate__animated animate__fadeInLeft">
+                    <div class="card col-md-4">
+                        <p class="text">Total Population</p>
+                        <h2 class="static-data"><i class="fas fa-users"></i>7.7 Billion</h2>
+                    </div>
+                    <div class="card col-md-4">
+                        <p class="text">Highest Populated Country</p>
+                        <h2 class="static-data"><i class="fas fa-arrow-up"></i>China</h2>
+                    </div>
+                    <div class="card col-md-3">
+                        <p class="text">Least Populated Country</p>
+                        <h2 class="static-data"><i class="fas fa-arrow-down"></i>Vatican City</h2>
+                    </div>
+                </div>
+                <div class="row visual animate__animated animate__fadeInRight">
+                    <div class="card col-md-4">
+                        <div id="population"></div>
+                    </div>
+                    <div class="card col-md-4">
+                        <div id="gender"></div>
+                    </div>
+                    <div class="card col-md-3">
+                        <div id="continents"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab2" class="tab-pane">
+                <div class="row">
+                    <div class="col-md-6 animate__animated animate__fadeInLeft">
+                        <div class="gdpcards info">
+                            <div class="card">
+                                <p class="text">Highest GDP per capita</p>
+                                <h2 class="static-data" id="highestGDP"></h2>
+                            </div>
+                            <div class="card">
+                                <p class="text">Lowest GDP per capita</p>
+                                <h2 class="static-data" id="lowestGDP"></h2>
+                            </div>
+                            <div class="card">
+                                <form class="gdpyear">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Select the year to visualize GDP per
+                                            capita</label>
+                                        <select class="custom-select" id="gender2" onchange="showMap(this.value)">
+                                            <option selected>2019</option>
+                                            <option value="2010">2010</option>
+                                            <option value="2010">2005</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2010">1995</option>
+                                            <option value="1990">1990</option>
+                                            <option value="2010">1985</option>
+                                            <option value="1980">1980</option>
+                                            <option value="2010">1975</option>
+                                            <option value="1970">1970</option>
+                                            <option value="2010">1965</option>
+                                            <option value="1960">1960</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div id="gdp"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 animate__animated animate__fadeInRight">
+                        <div class="card importexport">
+                            <div id="importexportgdp"></div>
+                        </div>
+                        <div class="card">
+                            <div id="importsexportsannual"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab3" class="tab-pane">
+                <div class="row checkbox-row">
+                    <div class="card col-md-6 animate__animated animate__fadeInLeft">
+                        <div id="production"></div>
+                    </div>
+                    <div class="card col-md-5 animate__animated animate__fadeInRight">
+                        <div class="">
+                            <div id="chart1"></div>
+                        </div>
+                        <div class="">
+                            <div id="chart2"></div>
+                        </div>
+                        <div class="">
+                            <div id="chart3"></div>
+                        </div>
+                        <div class="checkbox">
+                            <div class="selectcheckbox">
+                                <label><input type="checkbox" checked="true" onclick="clickCheckbox(Food)" id="Food">
+                                    Food</label>
+                            </div>
+                            <div class="selectcheckbox">
+                                <label><input type="checkbox" checked="true" onclick="clickCheckbox(Crop)" id="Crop">
+                                    Crop</label>
+                            </div>
+                            <div class="selectcheckbox">
+                                <label><input type="checkbox" checked="true" onclick="clickCheckbox(Livestock)"
+                                        id="Livestock">
+                                    Livestock</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+            </div>
+            <div id="tab4" class="tab-pane">
+                <div class="row">
+                    <div class="card col-md-4 animate__animated animate__fadeInLeft">
+                        <div id="literacy_adults"></div>
+                        <div id="literacy_male" style="display: none;"></div>
+                        <div id="literacy_female" style="display: none;"></div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" id="adults"
+                                onclick="togglebutton(1)">Adults</button>
+                            <button type="button" class="btn btn-secondary" id="male" onclick="togglebutton(2)">Male
+                                Adults</button>
+                            <button type="button" class="btn btn-secondary" id="female" onclick="togglebutton(3)">Female
+                                Adults</button>
+                        </div>
+                    </div>
+                    <div class="card col-md-4 animate__animated animate__fadeInUp">
+                        <div id="birthdeath"></div>
+
+                    </div>
+                    <div class="card col-md-3 animate__animated animate__fadeInRight">
+                        <div id="life_expectancy"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab5" class="tab-pane">
+                <div class="row">
+                    <div class="card col-md-5 offset-md-1 animate__animated animate__fadeInLeft">
+                        <div id="land"></div>
+                    </div>
+                    <div class="card col-md-5 animate__animated animate__fadeInRight">
+                        <div id="agriculture"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card forest_radio col-md-5 offset-md-1 animate__animated animate__fadeInLeft">
+                        <p>Select the year to visualize the Forest Land</p>
+                        <label><input type="radio" name="selectforestyear" value="1990"
+                                onclick="changeForestMap(1990)">1990</label>
+                        <label><input type="radio" name="selectforestyear" value="2000"
+                                onclick="changeForestMap(2000)">2000</label>
+                        <label><input type="radio" name="selectforestyear" value="2010"
+                                onclick="changeForestMap(2010)">2010</label>
+                        <label><input type="radio" name="selectforestyear" value="2015"
+                                onclick="changeForestMap(2015)">2015</label>
+                        <label><input type="radio" checked name="selectforestyear" value="2018"
+                                onclick="changeForestMap(2018)">2018</label>
+                    </div>
+                    <div class="card agri_radio col-md-5 animate__animated animate__fadeInRight">
+                        <p>Select the year to visualize the Agricultural Land</p>
+                        <label><input type="radio" name="selectagriyear" value="1990"
+                                onclick="changeAgriMap(1990)">1990</label>
+                        <label><input type="radio" name="selectagriyear" value="2000"
+                                onclick="changeAgriMap(2000)">2000</label>
+                        <label><input type="radio" name="selectagriyear" value="2010"
+                                onclick="changeAgriMap(1990)">2010</label>
+                        <label><input type="radio" name="selectagriyear" value="2015"
+                                onclick="changeAgriMap(1990)">2015</label>
+                        <label><input type="radio" checked name="selectagriyear" value="2018"
+                                onclick="changeAgriMap(2018)">2018</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">References</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <h5>Demographics</h5>
+                            <p>World Population Data from 1950 to 2020 - <a
+                                    href="https://www.un.org/en/development/desa/population/index.asp">United Nations
+                                    Org</a></p>
+                            <p>Male and Female Population - <a
+                                    href="https://www.un.org/en/development/desa/population/index.asp">United Nations
+                                    Org</a></p>
+                            <p>Population data based on continents - <a
+                                    href="https://www.un.org/en/development/desa/population/index.asp">United Nations
+                                    Org</a></p>
+                        </li>
+                        <li>
+                            <h5>GDP</h5>
+                            <p>GDP per capita data from 1960 to 2019 - <a href="https://data.worldbank.org/">World Bank
+                                    Org</a></p>
+                            <p>Imports and exports data - <a href="https://data.worldbank.org/">World Bank Org</a></p>
+                        </li>
+                        <li>
+                            <h5>Land</h5>
+                            <p>Forest Land Area data - <a href="https://data.worldbank.org/">World Bank Org</a></p>
+                            <p>Agricultural Land Area data - <a href="https://data.worldbank.org/">World Bank Org</a>
+                            </p>
+                        </li>
+                        <li>
+                            <h5>Production</h5>
+                            <p>Food, Crop, Livestock Production data - <a href="https://data.worldbank.org/">World Bank
+                                    Org</a></p>
+                        </li>
+                        <li>
+                            <h5>Rates</h5>
+                            <p>Birth and Death rates data - <a href="https://data.worldbank.org/">World Bank Org</a></p>
+                            <p>Literacy and Life expectancy rate - <a href="https://data.worldbank.org/">World Bank
+                                    Org</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
